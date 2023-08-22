@@ -6,7 +6,7 @@ services:
     ports:
       - 9000:9000
       volumes:
-        - $DOCKERDIR/appdata/portainer/data:/data 
+        - $DOCKERDIR/portainer/data:/data 
         - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     
@@ -18,27 +18,32 @@ services:
       - /root/.docker/config.json:/config.json
     restart: unless-stopped
 
-  mqtt:
+  eclipse-mosquitto:
+    container_name: MQTT
     image: eclipse/mosquitto
     restart: unless-stopped
     network_mode: host
     ports:
       - 1883:1883
-    
+    volumes:
+      - '$DOCKERDIR/mosquitto:/mosquitto/'
     
   scrypted:
     container_name: scrypted
     image: koush/scrypted
     volumes:
-      - ~/.scrypted/volume:/server/volume
+      - '~/.scrypted/volume:/server/volume'
     restart: unless-stopped
     network_mode: host
 
-  heimdall: 
+  linuxserver: 
     container_name: heimdall
     image: 'lscr.io/linuxserver/heimdall:latest'
     volumes:
       - $DOCKERDIR/heimdall:/config
+    environment:
+      - PGID=1000
+      - PUID=1000
     ports:
       - 8201:80
       - 8200:443

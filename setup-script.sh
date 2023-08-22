@@ -47,7 +47,7 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Create Necessary Directories"
 echo "----------------------------------------------------------------"
-mkdir /home/$USER/docker
+sudo mkdir /home/$USER/docker
 sudo mkdir /home/$USER/docker/mosquitto
 sudo mkdir /home/$USER/docker/mosquitto/config/
 sudo mkdir /home/$USER/docker/mosquitto/data/

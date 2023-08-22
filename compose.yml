@@ -38,7 +38,7 @@ services:
     container_name: heimdall
     image: 'lscr.io/linuxserver/heimdall:latest'
     volumes:
-      - /home/$USER/docker/heimdall:/config
+      - $DOCKERDIR/heimdall:/config
     ports:
       - 8201:80
       - 8200:443

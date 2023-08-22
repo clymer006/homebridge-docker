@@ -15,6 +15,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /root/.docker/config.json:/config.json
     restart: unless-stopped
+
+  mqtt:
+    image: eclipse/mosquitto
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - 1883:1883
+    
     
   scrypted:
     container_name: scrypted
@@ -31,7 +39,6 @@ services:
     ports:
       - 8201:80
       - 8200:443
-    
     restart: unless-stopped
     
     

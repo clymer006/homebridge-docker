@@ -29,6 +29,7 @@ services:
       - '$DOCKERDIR/mosquitto:/mosquitto/'
   zigbee2mqtt:
     container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
     network_mode: host
     restart: unless-stopped
     volumes:

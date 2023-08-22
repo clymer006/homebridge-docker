@@ -4,18 +4,18 @@ services:
     container_name: portainer
     image: portainer/portainer-ce:latest
     ports:
-      - 9000:9000
+      - '9000:9000'
       volumes:
-        - $DOCKERDIR/portainer/data:/data 
-        - /var/run/docker.sock:/var/run/docker.sock
+        - '$DOCKERDIR/portainer/data:/data'
+        - '/var/run/docker.sock:/var/run/docker.sock'
     restart: unless-stopped
     
   watchtower:
     container_name: watchtower
     image: containrrr/watchtower
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /root/.docker/config.json:/config.json
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/root/.docker/config.json:/config.json'
     restart: unless-stopped
 
   eclipse-mosquitto:
@@ -48,7 +48,7 @@ services:
     container_name: heimdall
     image: 'lscr.io/linuxserver/heimdall:latest'
     volumes:
-      - $DOCKERDIR/heimdall:/config
+      - '$DOCKERDIR/heimdall:/config'
     environment:
       - PGID=1000
       - PUID=1000

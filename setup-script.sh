@@ -37,14 +37,23 @@ echo "Commence Docker Setup"
 echo "----------------------------------------------------------------"
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-sudo usermod -aG docker pi
+sudo usermod -aG docker $USER
 echo "----------------------------------------------------------------"
 echo "Docker Setup Completed"
 echo "----------------------------------------------------------------"
 echo " "
 echo " "
 echo " "
+echo "----------------------------------------------------------------"
+echo "Create Necessary Directories"
+echo "----------------------------------------------------------------"
 mkdir /home/$USER/docker
+sudo mkdir /home/$USER/docker/mosquitto
+sudo mkdir /home/$USER/docker/mosquitto/config/
+sudo mkdir /home/$USER/docker/mosquitto/data/
+echo " "
+echo " "
+echo " "
 # Portainer setup
 echo "----------------------------------------------------------------"
 echo "Commence Portainer Setup"
@@ -74,9 +83,6 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Commence MQTT Setup"
 echo "----------------------------------------------------------------"
-sudo mkdir mosquitto
-sudo mkdir mosquitto/config/
-sudo mkdir mosquitto/data/
 sudo wget https://raw.githubusercontent.com/EddieDSuza/maxilife/main/mosquitto.conf -P /home/pi/mosquitto/config/
 sudo docker run -it --name MQTT --restart unless-stopped --net=host -tid -p 1883:1883 -v $(pwd)/mosquitto:/mosquitto/ eclipse-mosquitto
 echo "----------------------------------------------------------------"
@@ -113,7 +119,7 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Commence HEIMDALL Setup"
 echo "----------------------------------------------------------------"
-mkdir /home/kodestar/docker
+#mkdir /home/kodestar/docker
 echo " "
 sudo docker run --name=heimdall -d --restart unless-stopped -v /home/kodestar/docker/heimdall:/config -e PGID=1000 -e PUID=1000 -p 8201:80 -p 8200:443 lscr.io/linuxserver/heimdall:latest
 echo " "

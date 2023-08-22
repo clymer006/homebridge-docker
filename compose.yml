@@ -27,6 +27,14 @@ services:
       - 1883:1883
     volumes:
       - '$DOCKERDIR/mosquitto:/mosquitto/'
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - '$DOCKERDIR/zigbee2mqtt/data:/ap/data'
+    environment:
+      - TZ=$TZ
     
   scrypted:
     container_name: scrypted

@@ -4,7 +4,7 @@ services:
     container_name: heimdall
     image: 'lscr.io/linuxserver/heimdall:latest'
     volumes:
-      - '$DOCKERDIR/heimdall:/config'
+      - '$HOME/docker/heimdall:/config'
     environment:
       - PGID=1000
       - PUID=1000

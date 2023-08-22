@@ -58,71 +58,49 @@ echo " "
 echo " "
 # Portainer setup
 echo "----------------------------------------------------------------"
-echo "Commence Portainer Setup"
+echo "Commence Compose Setup"
+echo "copy compose file and environment file"
 echo "----------------------------------------------------------------"
-#sudo docker run -d -p 9000:9000 --name=portainer --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/compose.yml -o /home/$USER/docker/compose.yml
 curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/.env -o /home/$USER/docker/.env
 echo "----------------------------------------------------------------"
-echo "Portainer Interface is reachable at homebridge.local:9000"
+echo "Copy MQTT config"
 echo "----------------------------------------------------------------"
 echo " "
 echo " "
-echo " "
-# Watch Tower setup
-echo "----------------------------------------------------------------"
-echo "Commence Watch Tower Setup"
-echo "----------------------------------------------------------------"
-#sudo docker run --name="watchtower" -d --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower
-echo "----------------------------------------------------------------"
-echo "Watch Tower Setup Completed"
-echo "----------------------------------------------------------------"
-echo " "
-echo " "
-echo " "
-# MQTT Install
-echo "----------------------------------------------------------------"
-echo "Commence MQTT Setup"
-echo "----------------------------------------------------------------"
 sudo wget https://raw.githubusercontent.com/EddieDSuza/maxilife/main/mosquitto.conf -P /home/$USER/docker/mosquitto/config/
-#sudo docker run -it --name MQTT --restart unless-stopped --net=host -tid -p 1883:1883 -v $(pwd)/mosquitto:/mosquitto/ eclipse-mosquitto
+echo " "
+echo " "
 echo "----------------------------------------------------------------"
-echo "MQTT Setup Completed"
+echo "Copy Zigbee2MQTT Config"
 echo "----------------------------------------------------------------"
 echo " "
 echo " "
-echo " "
-# Z2M setup
-echo "----------------------------------------------------------------"
-echo "Commence Zigbee2MQTT Setup"
-echo "----------------------------------------------------------------"
 sudo wget https://raw.githubusercontent.com/EddieDSuza/techwitheddie/main/configuration.yaml -P /home/$USER/docker/zigbee2mqtt/data
 echo " "
-#sudo docker run --name zigbee2mqtt --device=/dev/ttyACM0 --net host --restart unless-stopped -v $(pwd)/data:/app/data -v /run/udev:/run/udev:ro -e TZ=Asia/Dubai koenkk/zigbee2mqtt
+echo " "
+echo "----------------------------------------------------------------"
+echo "Run Docker Compose"
+echo "----------------------------------------------------------------"
+echo " "
+echo " "
+docker compose up -d
+echo " "
+echo " "
+echo "----------------------------------------------------------------"
+echo "Portainer is reachable at homebridge.local:9000"
+echo "----------------------------------------------------------------"
+echo " "
+echo " "
 echo "----------------------------------------------------------------"
 echo "Z2M Interface is reachable at homebridge.local:8081"
 echo "----------------------------------------------------------------"
 echo " "
 echo " "
-echo " "
-# scrypted setup
-echo "----------------------------------------------------------------"
-echo "Commence Scrypted Setup"
-echo "----------------------------------------------------------------"
-#sudo docker run --name="scrypted" --network host -d --restart unless-stopped -v ~/.scrypted/volume:/server/volume koush/scrypted
 echo "----------------------------------------------------------------"
 echo "Scrypted Interface is reachable at homebridge.local:10443 or port 11080"
 echo "----------------------------------------------------------------"
 echo " "
-echo " "
-echo " "
-# HEIMDALL setup
-echo "----------------------------------------------------------------"
-echo "Commence HEIMDALL Setup"
-echo "----------------------------------------------------------------"
-#mkdir /home/kodestar/docker
-echo " "
-#sudo docker run --name=heimdall -d --restart unless-stopped -v /home/kodestar/docker/heimdall:/config -e PGID=1000 -e PUID=1000 -p 8201:80 -p 8200:443 lscr.io/linuxserver/heimdall:latest
 echo " "
 echo "----------------------------------------------------------------"
 echo "HEIMDALL Interface is reachable at homebridge.local:8201"

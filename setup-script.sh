@@ -59,9 +59,8 @@ echo "----------------------------------------------------------------"
 echo "Commence Portainer Setup"
 echo "----------------------------------------------------------------"
 #sudo docker run -d -p 9000:9000 --name=portainer --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-cd /home/$USER/docker
-curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/compose.yml -o compose.yml
-curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/.env -o .env
+curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/compose.yml -o /home/$USER/docker/compose.yml
+curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/.env -o /home/$USER/docker/.env
 echo "----------------------------------------------------------------"
 echo "Portainer Interface is reachable at homebridge.local:9000"
 echo "----------------------------------------------------------------"

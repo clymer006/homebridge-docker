@@ -8,14 +8,14 @@ services:
     ports:
       - '1883:1883'
     volumes:
-      - '$DOCKERDIR/mosquitto:/mosquitto/'
+      - '$HOME/docker/mosquitto:/mosquitto/'
   zigbee2mqtt:
     container_name: zigbee2mqtt
     image: koenkk/zigbee2mqtt
     network_mode: host
     restart: unless-stopped
     volumes:
-      - '$DOCKERDIR/zigbee2mqtt/data:/ap/data'
+      - '$HOME/docker/zigbee2mqtt/data:/ap/data'
     environment:
       - TZ='America/Central'
     

@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  scrypted:
+    container_name: scrypted
+    image: koush/scrypted
+    volumes:
+      - '~/.scrypted/volume:/server/volume'
+    restart: unless-stopped
+    network_mode: host

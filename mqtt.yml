@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  eclipse-mosquitto:
+    container_name: MQTT
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - '1883:1883'
+    volumes:
+      - '$DOCKERDIR/mosquitto:/mosquitto/'
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - '$DOCKERDIR/zigbee2mqtt/data:/ap/data'
+    environment:
+      - TZ=$TZ
+    

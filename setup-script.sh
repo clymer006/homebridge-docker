@@ -47,10 +47,12 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Create Necessary Directories"
 echo "----------------------------------------------------------------"
-sudo mkdir /home/$USER/docker
-sudo mkdir /home/$USER/docker/mosquitto
-sudo mkdir /home/$USER/docker/mosquitto/config/
-sudo mkdir /home/$USER/docker/mosquitto/data/
+mkdir /home/$USER/docker
+mkdir /home/$USER/docker/mosquitto
+mkdir /home/$USER/docker/mosquitto/config/
+mkdir /home/$USER/docker/mosquitto/data/
+mkdir /home/$USER/docker/zigbee2mqtt/
+mkdir /home/$USER/docker/zigbee2mqtt/data/
 echo " "
 echo " "
 echo " "
@@ -94,7 +96,7 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Commence Zigbee2MQTT Setup"
 echo "----------------------------------------------------------------"
-wget https://raw.githubusercontent.com/EddieDSuza/techwitheddie/main/configuration.yaml -P data
+sudo wget https://raw.githubusercontent.com/EddieDSuza/techwitheddie/main/configuration.yaml -P /home/$USER/docker/zigbee2mqtt/data
 echo " "
 #sudo docker run --name zigbee2mqtt --device=/dev/ttyACM0 --net host --restart unless-stopped -v $(pwd)/data:/app/data -v /run/udev:/run/udev:ro -e TZ=Asia/Dubai koenkk/zigbee2mqtt
 echo "----------------------------------------------------------------"

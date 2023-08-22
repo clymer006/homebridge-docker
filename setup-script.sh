@@ -82,7 +82,7 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Commence MQTT Setup"
 echo "----------------------------------------------------------------"
-sudo wget https://raw.githubusercontent.com/EddieDSuza/maxilife/main/mosquitto.conf -P /home/pi/mosquitto/config/
+sudo wget https://raw.githubusercontent.com/EddieDSuza/maxilife/main/mosquitto.conf -P /home/$USER/docker/mosquitto/config/
 sudo docker run -it --name MQTT --restart unless-stopped --net=host -tid -p 1883:1883 -v $(pwd)/mosquitto:/mosquitto/ eclipse-mosquitto
 echo "----------------------------------------------------------------"
 echo "MQTT Setup Completed"

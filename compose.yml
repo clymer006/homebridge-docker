@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
     network_mode: host
     ports:
-      - 1883:1883
+      - '1883:1883'
     volumes:
       - '$DOCKERDIR/mosquitto:/mosquitto/'
   zigbee2mqtt:
@@ -53,8 +53,8 @@ services:
       - PGID=1000
       - PUID=1000
     ports:
-      - 8201:80
-      - 8200:443
+      - '8201:80'
+      - '8200:443'
     restart: unless-stopped
     
     

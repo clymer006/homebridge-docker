@@ -17,5 +17,5 @@ services:
     volumes:
       - '$DOCKERDIR/zigbee2mqtt/data:/ap/data'
     environment:
-      - TZ=$TZ
+      - TZ='America/Central'
     

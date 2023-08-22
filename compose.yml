@@ -8,3 +8,31 @@ services:
         -     $DOCKERDIR/appdata/portainer/data:/data 
         - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
+    
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    restart: unless-stopped
+    
+  scrypted:
+    container_name: scrypted
+    image: koush/scrypted
+    volumes:
+      - ~/.scrypted/volume:/server/volume
+    restart: unless-stopped
+    network_mode: host
+
+  heimdall: 
+    image: lscr.io/linuxserver/heimdall:latest
+    volumes:
+      - /home/$USER/docker/heimdall:/config
+    ports:
+      - 8201:80
+      - 8200:443
+    
+    restart: unless-stopped
+    
+    
+    

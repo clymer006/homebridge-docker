@@ -61,7 +61,7 @@ echo "----------------------------------------------------------------"
 echo "Commence Compose Setup"
 echo "copy compose file and environment file"
 echo "----------------------------------------------------------------"
-curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/compose.yml -o /home/$USER/docker/compose.yml
+curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/docker-compose.yml -o /home/$USER/docker/docker-compose.yml
 curl -fsSL https://raw.githubusercontent.com/clymer006/homebridge-docker/main/.env -o /home/$USER/docker/.env
 echo "----------------------------------------------------------------"
 echo "Copy MQTT config"
@@ -84,7 +84,7 @@ echo "Run Docker Compose"
 echo "----------------------------------------------------------------"
 echo " "
 echo " "
-docker compose up -d
+sudo docker compose up -d
 echo " "
 echo " "
 echo "----------------------------------------------------------------"
@@ -115,4 +115,4 @@ echo " "
 echo " "
 echo " "
 echo "Rebooting Now"
-sudo reboot
+#sudo reboot

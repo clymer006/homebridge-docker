@@ -53,6 +53,7 @@ mkdir /home/$USER/docker/mosquitto/config/
 mkdir /home/$USER/docker/mosquitto/data/
 mkdir /home/$USER/docker/zigbee2mqtt/
 mkdir /home/$USER/docker/zigbee2mqtt/data/
+sudo touch /root/.docket/config.json
 echo " "
 echo " "
 echo " "
